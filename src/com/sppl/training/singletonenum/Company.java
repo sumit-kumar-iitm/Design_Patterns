@@ -1,19 +1,13 @@
-package com.sppl.training.singleton;
+package com.sppl.training.singletonenum;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Company implements Serializable{
-	private static Company instance = new Company();
+public enum Company implements Serializable{
+	instance;
 	private String name;
-	private Company() {
-		
-	}
-	public static Company getinstance() {
-		return instance;
-	}
 	
 	public String getName() {
 		return name;
@@ -22,9 +16,9 @@ public class Company implements Serializable{
 		this.name = name;
 	}
 	
-	private Object readResolve() {
+	/*private Object readResolve() {
 		System.out.println("Invoking readResolve");
-		//instance.setName(name); //to get the same name when we stored object 
+		instance.setName(name); //to get the same name when we stored object 
 		return instance;
 	}
 	
@@ -43,5 +37,5 @@ public class Company implements Serializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 }

@@ -1,4 +1,4 @@
-package com.sppl.training.singleton;
+package com.sppl.training.singletonenum;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 
 public class TestWithSerialization {
 	public static void main(String[] args) {
-		Company company1 = Company.getinstance();
+		Company company1 = Company.instance;
 		company1.setName("Intuit");
 		try{
 			FileInputStream fin = new FileInputStream("company.dat");
@@ -15,7 +15,7 @@ public class TestWithSerialization {
 			ObjectOutputStream oout = new ObjectOutputStream(fout);
 			oout.writeObject(company1);
 			oout.close();
-			//company1.setName("Actiance");
+			company1.setName("Actiance");
 			ObjectInputStream oin = new ObjectInputStream(fin);
 			
 			Company c1 = (Company)oin.readObject();
